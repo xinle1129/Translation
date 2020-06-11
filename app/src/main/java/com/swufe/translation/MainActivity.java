@@ -3,8 +3,10 @@ package com.swufe.translation;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -27,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements Runnable {
     String str;
     @Override
     protected void onCreate(Bundle savedInstanceState){
-        editText = findViewById(R.id.second_input);
-        textView = findViewById(R.id.second_output);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ViewPager viewPager = findViewById(R.id.viewpager);
@@ -36,9 +36,12 @@ public class MainActivity extends AppCompatActivity implements Runnable {
         viewPager.setAdapter(pageAdapter);
         TabLayout tablayout = findViewById(R.id.sliding_tabs);
         tablayout.setupWithViewPager(viewPager);
+        //textView1 = findViewById(R.id.first_output);
+        //Log.i(TAG,"run11111111: " + textView1.getText().toString());
+        //textView.setMovementMethod(ScrollingMovementMethod.getInstance());
+        //textView1.setMovementMethod(ScrollingMovementMethod.getInstance());
 
     }//
-
     @Override
     public void run() {
         Document doc0 = null;
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
                 Log.i(TAG,"run00000000: table0["+i0+"]=" + table0.text());
                 i0++;
             }
+            //textView1.setMovementMethod(ScrollingMovementMethod.getInstance());
             textView = findViewById(R.id.second_output);
             textView.setText(tables0.get(0).text());
             //Log.i(TAG,"run00000000: table0["+i0+"]=" + tables0.get(22));
